@@ -1,0 +1,17 @@
+{
+  "name": "twitter-application",
+  "description": "Using twitter API",
+  "main": "index.ntml",
+  "authors": [
+    "ablokhin"
+  ],
+  "license": "MIT",
+  "homepage": "index.ntml",
+  "devDependencies": {
+    "angular": "1.5.11",
+    "codebird-js": "^2.6.0",
+    "angular-material": "1.1.8",
+    "material-design-icons": "^3.0.1",
+    "moment": "^2.22.2"
+  }
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="TwitterApplication">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter twits gallery</title>
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/material-design-icons/iconfont/material-icons.css" />
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/codebird-js/codebird.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="app.modules.js"></script>
+    <!-- Services -->
+    <script src="services/search/search.module.js"></script>
+    <script src="services/search/search.service.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/Content.controller.js"></script>
+    <script src="controllers/Toolbar.controller.js"></script>
+  </head>
+  <body>
+    <div layout="column" layout-fill>
+      <md-toolbar ng-controller="toolbarCtrl">
+        <div class="md-toolbar-tools">
+          <h2 md-truncate flex="20">Twitter Application</h2>
+          <md-input-container flex>
+            <label>&nbsp;</label>
+            <input placeholder="enter search"
+                   ng-model="searchLine"
+                   ng-model-options="{debounce: 1000}">
+          </md-input-container>
+          <md-button ng-click="getTweets(searchLine)">
+            <md-icon class="material-icons search">search</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <md-content ng-controller="contentCtrl">
+        <h1 ng-show="!obj.queryHasError && obj.tweets.length == 0 ">Search returned no results</h1>
+        <md-list>
+          <md-list-item class="md-2-line" ng-repeat="tweet in obj.tweets track by tweet.id">
+            <div class="md-list-item-inner md-button md-no-style">
+              <img ng-src="{{tweet.user.profile_image_url}}" class="md-avatar" alt="{{tweet.user.name}}"/>
+              <div class="md-list-item-text layout-column" layout="column">
+                <h3>User name: <small>{{tweet.user.name}}</small></h3>
+                <p>{{tweet.text}}</p>
+              </div>
+              <md-icon class="material-icons md-18" ng-click="deleteTweet(tweet.id)">clear</md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </div>
+  </body>
+</html>

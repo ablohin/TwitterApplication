@@ -1,0 +1,25 @@
+body {
+  padding-top: 20px;
+}
+
+md-input-container .md-errors-spacer {
+  display: none;
+  }
+
+md-list-item {
+  border-bottom: 1px solid;
+}
+
+md-input-container.md-input-focused input {
+  color: black !important;
+}
+
+md-input-container input {
+  color: black !important;
+}
+
+md-content h1 {
+  color: black;
+  text-align: center;
+  padding-top: 250px;
+}
